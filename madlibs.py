@@ -32,8 +32,10 @@ def greet_person():
 def show_game_form():
     answer = request.args.get('playgame')
     player = request.args.get('player')
+    colors = ["puce", "drunk-tank pink", "gingerline", "slate"]
+    nouns =  ["computer", "parachute", "goat", "gerbil", "python"]
     if answer == "yes":
-        return render_template("game.html", player=player)
+        return render_template("game.html", player=player, colors=colors, nouns=nouns)
     else:
         return render_template("goodbye.html", player=player)
 @app.route('/madlib')

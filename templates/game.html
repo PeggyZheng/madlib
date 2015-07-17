@@ -1,32 +1,41 @@
 {% extends 'base.html' %}
     {% block title %}Madlib game{% endblock %}
-</head>
-<body>
+
     {% block content %}
     <h1>{{ player }}, welcome to the Madlib game!</h1>
-    <form action="/madlib">
+    <form action="/madlib" id="madlib-game-form">
         <label>Please enter a person's name <input type="text" name="person"></label>
         <br>
         <label>Please pick a color</label>
                 <select name="color">
-                    <option value="puce">puce</option>
-                    <option value="drunk-tank pink">drunk-tank pink</option>
-                    <option value="gingerline">gingerline</option>
-                    <option value="slate">slate</option>
+                    {% for color in colors %}
+                        <option value="{{ color }}">{{ color }}</option>
+                    {% endfor %}
                 </select>
         <br>
         <label>Please pick your nouns</label><br>
-            <input type="checkbox" name="noun" value="computer">computer<br>
-            <input type="checkbox" name="noun" value="parachute">parachute<br>
-            <input type="checkbox" name="noun" value="goat">goat<br>
-            <input type="checkbox" name="noun" value="gerbil">gerbil<br>
-            <input type="checkbox" name="noun" value="python">python<br>
+                    {% for noun in nouns %}
+                        <input type="checkbox" name="noun" value="{{ noun }}">{{ noun }}<br>
+                    {% endfor %}
         <br>
         <label>Please enter an adjective <input type="text" name="adjective"></label>
         <br>
         <br>
     <input type="submit">
     </form>
+
+<script>
+    var gameForm = document.getElementById('madlib-game-form');
+
+    function emptycheck(evt) {
+        console.log('test')
+        console.log('gameForm');
+    //     alert("I don't feel like searching");
+    // evt.preventDefault();
+}
+
+    gameForm.addEventListener('submit', emptycheck, true);
+
+</script>
 {% endblock %}
-</body>
-</html>
+
