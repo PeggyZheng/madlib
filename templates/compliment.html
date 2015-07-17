@@ -1,9 +1,8 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>A Compliment</title>
+{% extends 'base.html' %}
+  {% block title %}A Compliment{% endblock %}
 </head>
 <body>
+    {% block content %}
     Hi {{ person }}! Do you want to play a game?
     <form action="/game">
         <div>
@@ -16,5 +15,6 @@
             <input type="submit">
         </div>
     </form>
+    {% endblock %}
 </body>
 </html>
